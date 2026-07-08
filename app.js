@@ -1,13 +1,13 @@
 import express from "express";
 import cors from "cors";
-//import { connect } from "./src/bd.js";
+import { connect } from "./src/bd.js";
 
-// import { userRoutes } from "./src/routes/user.routes.js";
+import { userRoutes } from "./src/routes/user.routes.js";
 
 const app = express();
 
 // Conecta a la BBDD
-//connect();
+connect();
 
 app.use(
   cors({
@@ -17,6 +17,8 @@ app.use(
 );
 
 app.use(express.json());
+
+app.use("/users", userRoutes);
 
 const PORT = process.env.PORT || 3000;
 
