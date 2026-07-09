@@ -24,9 +24,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    
-
-    const {user, token} = await authServices.userLogin(req.body);
+    const { user, token } = await authServices.userLogin(req.body);
 
     return res.status(200).json({
       id: user.id,
@@ -34,8 +32,8 @@ export const login = async (req, res) => {
       nombre: user.first_name,
       apellidos: user.last_name,
       email: user.email,
-      token: user.token,
-      role: user.role
+      token: token,
+      role: user.role,
     });
   } catch (error) {
     console.error("Login no valido ", error);
@@ -45,7 +43,7 @@ export const login = async (req, res) => {
     }
 
     if (error.message == "WRONG_PASSWORD") {
-      return res.status(400).json({ message: "Contraseña no valida" });
+      return res.status(400).json({ message: "Credenciales incorrectas" });
     }
 
     return res.status(500).json({ message: "Error en la base de datos" });

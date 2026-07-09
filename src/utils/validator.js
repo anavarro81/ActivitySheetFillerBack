@@ -41,8 +41,8 @@ const validateName = (name) => {
     return false;
   }
 
-  // (letras y números, de 3 a 10 caracteres)
-  const regex = /^[a-zA-Z0-9]{3,10}$/;
+  // (letras y números, de 3 a 10 caracteres, admite espacios (nombres compuestos))
+  const regex = /^[a-zA-Z ]{3,10}$/;
 
   return regex.test(name);
 
@@ -55,7 +55,7 @@ const validateSurname = (surname) => {
   }
 
   // (letras y números, de 3 a 20 caracteres). Admite espacios. 
-  const regex = /^[a-zA-Z0-9 ]{3,20}$/;
+  const regex = /^[a-zA-Z ]{3,20}$/;
 
   return regex.test(surname);
 
