@@ -36,24 +36,9 @@ export const userLogin = async (userData) => {
   let searchCondition = null;
   let identificator = null;
 
-  const { email, name, dni, password } = userData;
+  const { dni, password } = userData;
 
-  if (email) {
-    searchCondition = { email };
-    identificator = email;
-  } else if (name) {
-    searchCondition = { name };
-    identificator = name;
-  } else if (dni) {
-    searchCondition = { dni };
-    identificator = dni;
-  }
-
-  if (!searchCondition) {
-    throw new Error("IDENTIFICATOR_NOT_VALID");
-  }
-
-  const user = await User.findOne(searchCondition);
+  const user = await User.findOne({ dni: dni });
 
   if (!user) {
     throw new Error("USER_NOT_FOUND");
@@ -65,11 +50,10 @@ export const userLogin = async (userData) => {
   }
 
   // Generar el token
-  const token = generateSign(user._id, identificator);
+  const token = generateSign(user._id, dni);
 
   return {
-    id: user._id,
-    identificator,
+    user, 
     token,
   };
 };

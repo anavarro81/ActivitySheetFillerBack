@@ -24,20 +24,21 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    // Comprueba si existe el email en bbdd.
+    
 
-    const user = await authServices.userLogin(req.body);
+    const {user, token} = await authServices.userLogin(req.body);
 
     return res.status(200).json({
       id: user.id,
-      identificator: user.identificator,
+      dni: user.dni,
+      nombre: user.first_name,
+      apellidos: user.last_name,
+      email: user.email,
       token: user.token,
+      role: user.role
     });
   } catch (error) {
-    console.error("Se ha producido un error ", error);
-    if (error.message == "IDENTIFICATOR_NOT_VALID") {
-      return res.status(400).json({ message: "Identificador no válido" });
-    }
+    console.error("Login no valido ", error);
 
     if (error.message == "USER_NOT_FOUND") {
       return res.status(400).json({ message: "Usuario no existe" });
