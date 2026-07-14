@@ -1,23 +1,17 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const taskSchema = new Schema(
-  {
-    task_id: { type: Schema.Types.ObjectId, required: true },
-    description: { type: String, required: true },
-    order: { type: Number, required: true },
-  },
-  
-);
+const taskSchema = new Schema({
+  task_id: { type: Schema.Types.ObjectId, required: true },
+  description: { type: String, required: true },
+  order: { type: Number, required: true },
+});
 
-const dailyLogSchema = new Schema(
-  {
-    date: { type: Date, required: true },
-    tasks: { type: [taskSchema], default: [] },
-    absence: { type: String, default: null },
-  },
-  
-);
+const dailyLogSchema = new Schema({
+  date: { type: Date, required: true },
+  tasks: { type: [taskSchema], default: [] },
+  absence: { type: String, default: null },
+});
 
 const weeklyLogSchema = new Schema(
   {
@@ -31,7 +25,7 @@ const weeklyLogSchema = new Schema(
     end_date: { type: Date, required: true },
     status: {
       type: String,
-      enum: ["Completado", "pendiente", "Cancelado"],
+      enum: ["Completado", "Pendiente", "Cancelado", "En Curso"],
       default: "pendiente",
     },
     daily_logs: { type: [dailyLogSchema], default: [] },

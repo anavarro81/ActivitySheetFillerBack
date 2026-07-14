@@ -3,6 +3,7 @@ import cors from "cors";
 import { connect } from "./src/bd.js";
 
 import { userRoutes } from "./src/routes/user.routes.js";
+import { internshipRoutes } from "./src/routes/internships.routes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(
 app.use(express.json());
 
 app.use("/users", userRoutes);
+app.use("/internships", internshipRoutes);
 
 const PORT = process.env.PORT || 3000;
 
