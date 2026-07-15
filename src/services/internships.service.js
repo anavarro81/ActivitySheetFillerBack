@@ -78,7 +78,7 @@ export const getInternshipsByStudent = async (student_id) => {
 
         // ensure dates are proper ISO strings when returned
         const weeklyLogsData = weeklyLogs.map((wl) => ({
-          internship_id: wl.internship_id,
+          week_id: wl._id,
           week_number: wl.week_number,
           start_date: wl.start_date,
           end_date: wl.end_date,
