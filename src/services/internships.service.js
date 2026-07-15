@@ -71,7 +71,10 @@ export const getInternshipsByStudent = async (student_id) => {
       internships.map(async (intern) => {
         const weeklyLogs = await WeeklyLog.find({
           internship_id: intern._id,
-        }).lean();
+        })
+          // Ordenar las semanas, si no las devuelve desorneadas.
+          .sort({ week_number: 1 })
+          .lean();
 
         // ensure dates are proper ISO strings when returned
         const weeklyLogsData = weeklyLogs.map((wl) => ({
