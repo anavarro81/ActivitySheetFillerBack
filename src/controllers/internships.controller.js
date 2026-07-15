@@ -38,10 +38,10 @@ export const getInternshipsByStudent = async (req, res) => {
       return res.status(400).json({ message: "student_id is required" });
     }
 
-    const internships =
+    const  internshipWeeks =
       await internshipServices.getInternshipsByStudent(student_id);
 
-    return res.status(200).json(internships);
+    return res.status(200).json(internshipWeeks);
   } catch (error) {
     console.error("error getting internships", error);
 

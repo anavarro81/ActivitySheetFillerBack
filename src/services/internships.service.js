@@ -83,17 +83,14 @@ export const getInternshipsByStudent = async (student_id) => {
           start_date: wl.start_date,
           end_date: wl.end_date,
           status: wl.status,
-          daily_logs: wl.daily_logs,
+          
         }));
 
+        
+  
+
         return {
-          id: intern._id,
-          student_id: intern.student_id,
-          company_name: intern.company_name,
-          start_date: intern.start_date,
-          end_date: intern.end_date,
-          status: intern.status,
-          weeklyLogsData,
+          weeklyLogsData
         };
       }),
     );
