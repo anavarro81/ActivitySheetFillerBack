@@ -8,12 +8,12 @@ import {
   validateRegister,
   validateLogin,
   validateInternship,
+  validateToken,
 } from "../middleware/validator.middleware.js";
 
 const internshipRoutes = express.Router();
 
 internshipRoutes.post("", validateInternship, newInternship);
-// GET /internships?student_id=...  
-internshipRoutes.get("", getInternshipsByStudent);
+internshipRoutes.get("/my-internship", validateToken, getInternshipsByStudent);
 
 export { internshipRoutes };

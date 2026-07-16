@@ -5,6 +5,8 @@ import {
   validatePassword,
   validateSurname,
 } from "../utils/validator.js";
+import Internship from "../models/intenships.model.js";
+import { verifySign } from "../utils/jwt.js";
 
 export const validateRegister = (req, res, next) => {
   const { dni, first_name, last_name, email, password, role } = req.body;
@@ -88,12 +90,8 @@ export const validateInternship = (req, res, next) => {
     return res.status(400).json({ message: "end_date is not a valid date" });
   }
 
-
-  // Normalize date to compare. 
+  // Normalize date to compare.
   end.setHours(0, 0, 0, 0);
-
-  console.log("end ", end);
-  console.log("start ", start);
 
   if (end <= start) {
     return res
@@ -106,4 +104,50 @@ export const validateInternship = (req, res, next) => {
   }
 
   next();
+};
+
+export const validateToken = async (req, res, next) => {
+  const authHeader = req.headers.authorization || req.headers.Authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({ message: "no autorizado" });
+  }
+
+  const parts = authHeader.split(" ");
+  if (parts.length !== 2 || parts[0] !== "Bearer") {
+    return res.status(401).json({ message: "no autorizado" });
+  }
+
+  const token = parts[1];
+
+  try {
+    let payload;
+    try {
+      payload = verifySign(token);
+    } catch (e) {
+      return res.status(401).json({ message: "no autorizado" });
+    }
+
+    const studentId = payload._id || payload.id;
+
+    
+
+    if (!studentId) {
+      return res.status(401).json({ message: "no autorizado" });
+    }
+
+    const internship = await Internship.findOne({
+      student_id: studentId,
+    }).exec();
+
+    if (!internship) {
+      return res.status(401).json({ message: "no autorizado" });
+    }
+
+    // Attach student id to request for controllers
+    req.student_id = studentId;
+    next();
+  } catch (err) {
+    return res.status(500).json({ message: "server error" });
+  }
 };

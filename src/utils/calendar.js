@@ -16,7 +16,7 @@ export const generateIntershipCalendar = (startDateISO, endDateISO) => {
 
   const totalWeeks = calculateWeeksNumber(startDate, endDate);
 
-  console.log("totalWeeks ", totalWeeks);
+  
 
   while (current_date <= endDate) {
     let newDate = new Date(current_date);
@@ -24,7 +24,7 @@ export const generateIntershipCalendar = (startDateISO, endDateISO) => {
 
     if (newDate.getDay() != 5) {
       if (current_date.getTime() == endDate.getTime()) {
-        console.log("grabado la ultima semana");
+        
 
         const currentWeek = {
           week: week + 1,
@@ -49,7 +49,7 @@ export const generateIntershipCalendar = (startDateISO, endDateISO) => {
     }
   }
 
-  console.log("result ", result);
+  
 
   return result;
 };
@@ -85,9 +85,5 @@ export const calculateWeeksNumber = (startDate, endDate) => {
   return totalDays / 7 + 1;
 };
 
-// let fec1 = new Date("2026-06-08");
-// let fec2 = new Date("2026-07-02");
 
-// generateIntershipCalendar(fec1, fec2);
 
-// console.log(calculateWeeksNumber(fec1, fec2));

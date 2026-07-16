@@ -5,8 +5,6 @@ export const newInternship = async (req, res) => {
     const { createdInternship, weeklyLogsData } =
       await internshipServices.newInternships(req.body);
 
-    console.log(">> createdinternship ", createdInternship);
-    console.log(">> weeklyLogsData ", weeklyLogsData);
 
     return res.status(201).json({
       id: createdInternship._id,
@@ -32,7 +30,10 @@ export const newInternship = async (req, res) => {
 export const getInternshipsByStudent = async (req, res) => {
   try {
     // accept student id from query, header or body for flexibility
-    const student_id = req.query.student_id      
+    const student_id = req.student_id
+    
+    
+    
 
     if (!student_id) {
       return res.status(400).json({ message: "student_id is required" });

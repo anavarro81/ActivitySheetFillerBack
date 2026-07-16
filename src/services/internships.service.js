@@ -5,7 +5,7 @@ import { generateIntershipCalendar } from "../utils/calendar.js";
 
 export const newInternships = async (InternshipsData) => {
   try {
-    console.log("InternshipsData ", InternshipsData);
+    
 
     const { student_id, start_date, end_date } = InternshipsData;
 
@@ -17,13 +17,13 @@ export const newInternships = async (InternshipsData) => {
 
     const calendar = generateIntershipCalendar(start_date, end_date);
 
-    // console.log("calendar ", calendar);
+    
 
     const createdInternship = await Internship.create(InternshipsData);
 
     const internshipsID = createdInternship._id;
 
-    console.log("createdInternship ", createdInternship);
+    
 
     const curretDate = new Date();
 
@@ -45,7 +45,7 @@ export const newInternships = async (InternshipsData) => {
       };
     });
 
-    console.log("weeklyLogsData ", weeklyLogsData);
+    
 
     await Promise.all(weeklyLogsData.map((data) => WeeklyLog.create(data)));
 
