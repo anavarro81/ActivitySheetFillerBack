@@ -24,3 +24,41 @@ export const getTaskByWeek = async (req, res) => {
     return res.status(500).json({ error: "error in database" });
   }
 };
+
+export const updateWeeklyTasks = async (req, res) => {
+  try {
+    const weekId = req.params.id;
+    const weekData = req.body;
+
+    const updatedLog = await weekLogServices.updateWeeklyTasks(
+      weekId,
+      weekData,
+    );
+
+    return res.status(200).json({ updatedLog });
+  } catch (error) {
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
+  }
+};
+
+export const completeWeeklyTasks = async (req, res) => {
+  try {
+    const weekId = req.params.id;
+    const weekData = req.body;
+
+    const completedWeek = await weekLogServices.completeWeeklyTasks(
+      weekId,
+      weekData,
+    );
+
+    res.status(200).json({ completedWeek });
+  } catch (error) {
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
+  }
+};

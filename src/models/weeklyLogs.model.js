@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
-  task_id: { type: Schema.Types.ObjectId, required: true },
   description: { type: String, required: true },
   order: { type: Number, required: true },
 });
@@ -26,7 +25,7 @@ const weeklyLogSchema = new Schema(
     status: {
       type: String,
       enum: ["Completado", "Pendiente", "Cancelado", "En Curso"],
-      default: "pendiente",
+      default: "Pendiente",
     },
     daily_logs: { type: [dailyLogSchema], default: [] },
   },

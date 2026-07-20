@@ -145,6 +145,7 @@ export const validateToken = async (req, res, next) => {
     }).exec();
 
     if (!internship) {
+      console.error("Estudiante sin practicas asociadas");
       return res.status(401).json({ message: "no autorizado" });
     }
 
