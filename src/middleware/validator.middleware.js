@@ -120,6 +120,8 @@ export const validateToken = async (req, res, next) => {
 
   const token = parts[1];
 
+  console.log("token recibido ", token);
+
   try {
     let payload;
     try {
@@ -130,7 +132,9 @@ export const validateToken = async (req, res, next) => {
 
     const studentId = payload._id || payload.id;
 
-    
+    console.log("payload ", payload);
+
+    console.log("studentId ", studentId);
 
     if (!studentId) {
       return res.status(401).json({ message: "no autorizado" });
@@ -143,6 +147,8 @@ export const validateToken = async (req, res, next) => {
     if (!internship) {
       return res.status(401).json({ message: "no autorizado" });
     }
+
+    console.log("studentId >> ", studentId);
 
     // Attach student id to request for controllers
     req.student_id = studentId;
