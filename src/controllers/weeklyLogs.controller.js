@@ -11,17 +11,10 @@ export const getTaskByWeek = async (req, res) => {
 
     return res.status(200).json({ weekTasks });
   } catch (error) {
-    console.error("error en la semana", error);
-
-    if (error.message == "week not found") {
-      return res.status(404).json({ message: "Semana no encontrada" });
-    }
-
-    if (error.message == "Forbidden") {
-      return res.status(403).json({ message: "Forbidden" });
-    }
-
-    return res.status(500).json({ error: "error in database" });
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
   }
 };
 

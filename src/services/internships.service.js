@@ -2,28 +2,24 @@ import Internship from "../models/intenships.model.js";
 import WeeklyLog from "../models/weeklyLogs.model.js";
 import User from "../models/user.model.js";
 import { generateIntershipCalendar } from "../utils/calendar.js";
+import createError from "http-errors";
+
 
 export const newInternships = async (InternshipsData) => {
   try {
-    
-
     const { student_id, start_date, end_date } = InternshipsData;
 
     const student = await User.findOne({ _id: student_id });
 
     if (!student) {
-      throw new Error("STUDENT_NOT_EXISTS");
+      throw createError(404, "student not found");
     }
 
     const calendar = generateIntershipCalendar(start_date, end_date);
 
-    
-
     const createdInternship = await Internship.create(InternshipsData);
 
     const internshipsID = createdInternship._id;
-
-    
 
     const curretDate = new Date();
 
@@ -45,15 +41,13 @@ export const newInternships = async (InternshipsData) => {
       };
     });
 
-    
-
     await Promise.all(weeklyLogsData.map((data) => WeeklyLog.create(data)));
 
     return { createdInternship, weeklyLogsData };
   } catch (error) {
     console.error("error creando las prácticas ", error);
-
-    throw new Error("ERROR_CREATE_INTERNSHIP");
+    throw error;
+    
   }
 };
 
@@ -62,7 +56,7 @@ export const getInternshipsByStudent = async (student_id) => {
     const student = await User.findOne({ _id: student_id });
 
     if (!student) {
-      throw new Error("STUDENT_NOT_EXISTS");
+      throw createError(404, "student not found");
     }
 
     const internships = await Internship.find({ student_id }).lean();
@@ -83,14 +77,10 @@ export const getInternshipsByStudent = async (student_id) => {
           start_date: wl.start_date,
           end_date: wl.end_date,
           status: wl.status,
-          
         }));
 
-        
-  
-
         return {
-          weeklyLogsData
+          weeklyLogsData,
         };
       }),
     );

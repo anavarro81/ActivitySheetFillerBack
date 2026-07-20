@@ -7,7 +7,7 @@ export const getTaskByWeek = async (weekID, studentId) => {
     const weekTask = await WeeklyLog.findOne({ _id: weekID });
 
     if (!weekTask) {
-      throw new Error("week not found");
+      throw createError(404, "week not found");
     }
 
     // Obtengo las practicas
@@ -15,15 +15,13 @@ export const getTaskByWeek = async (weekID, studentId) => {
       _id: weekTask.internship_id,
     });
 
-    if (!intenships) {
-      throw new Error("intenships not found");
+    if (!intenships) {      
+      throw createError(404, "intenships not found");
     }
 
-    console.log("intenships.student_id ", intenships.student_id);
-    console.log("studentId ", studentId);
 
     if (intenships.student_id != studentId) {
-      throw new Error("Forbidden");
+      throw createError(403, "Access denied");     
     }
 
     return {
@@ -33,12 +31,7 @@ export const getTaskByWeek = async (weekID, studentId) => {
     };
   } catch (error) {
     console.error("error recuperando la semana ", error.message);
-
-    if (error.message) {
-      throw new Error(error.message);
-    } else {
-      throw new Error("error in database");
-    }
+    throw error;
   }
 };
 

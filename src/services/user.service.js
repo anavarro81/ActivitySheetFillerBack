@@ -1,4 +1,6 @@
 import User from "../models/user.model.js";
+import createError from "http-errors";
+
 import {
   validateEmail,
   validatePassword,
@@ -19,7 +21,7 @@ export const createUser = async (userData) => {
     const existingEmail = await usedEmail(email);
 
     if (existingEmail) {
-      throw new Error("EXISTING_EMAIL");
+      throw createError(400, "Existing email");
     }
   }
 
@@ -36,24 +38,29 @@ export const userLogin = async (userData) => {
   let searchCondition = null;
   let identificator = null;
 
-  const { dni, password } = userData;
+  try {
+    const { dni, password } = userData;
 
-  const user = await User.findOne({ dni: dni });
+    const user = await User.findOne({ dni: dni });
 
-  if (!user) {
-    throw new Error("USER_NOT_FOUND");
+    if (!user) {
+      throw createError(404, "user not found");
+    }
+
+    // Validar contraseñas
+    if (!bcrypt.compareSync(password, user.password)) {
+      throw createError(400, "wrong password");
+    }
+
+    // Generar el token
+    const token = generateSign(user._id, dni);
+
+    return {
+      user,
+      token,
+    };
+  } catch (error) {
+    console.error("Error en el login ", error);
+    throw error;
   }
-
-  // Validar contraseñas
-  if (!bcrypt.compareSync(password, user.password)) {
-    throw new Error("WRONG_PASSWORD");
-  }
-
-  // Generar el token
-  const token = generateSign(user._id, dni);
-
-  return {
-    user, 
-    token,
-  };
 };

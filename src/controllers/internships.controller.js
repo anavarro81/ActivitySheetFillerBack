@@ -5,7 +5,6 @@ export const newInternship = async (req, res) => {
     const { createdInternship, weeklyLogsData } =
       await internshipServices.newInternships(req.body);
 
-
     return res.status(201).json({
       id: createdInternship._id,
       student_id: createdInternship.student_id,
@@ -17,39 +16,31 @@ export const newInternship = async (req, res) => {
     });
   } catch (error) {
     console.error("error registering  internship", error);
-
-    if (error.message == "STUDENT_NOT_EXISTS") {
-      return res.status(400).json({ message: "El estudiante no existe" });
-    }
-
-    return res.status(500).json({ error: "error in database" });
-    //   }
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
   }
 };
 
 export const getInternshipsByStudent = async (req, res) => {
   try {
     // accept student id from query, header or body for flexibility
-    const student_id = req.student_id
-    
-    
-    
+    const student_id = req.student_id;
 
     if (!student_id) {
       return res.status(400).json({ message: "student_id is required" });
     }
 
-    const  internshipWeeks =
+    const internshipWeeks =
       await internshipServices.getInternshipsByStudent(student_id);
 
     return res.status(200).json(internshipWeeks);
   } catch (error) {
     console.error("error getting internships", error);
-
-    if (error.message == "STUDENT_NOT_EXISTS") {
-      return res.status(400).json({ message: "El estudiante no existe" });
-    }
-
-    return res.status(500).json({ error: "error in database" });
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
   }
 };

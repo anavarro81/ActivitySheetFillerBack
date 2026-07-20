@@ -13,12 +13,10 @@ export const register = async (req, res) => {
     });
   } catch (error) {
     console.error("Error en el registro ", error);
-
-    if (error.message == "EXISTING_EMAIL") {
-      return res.status(400).json({ message: "El email ya existe" });
-    }
-
-    return res.status(500).json({ error: error });
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
   }
 };
 
@@ -37,15 +35,9 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     console.error("Login no valido ", error);
-
-    if (error.message == "USER_NOT_FOUND") {
-      return res.status(400).json({ message: "Usuario no existe" });
-    }
-
-    if (error.message == "WRONG_PASSWORD") {
-      return res.status(400).json({ message: "Credenciales incorrectas" });
-    }
-
-    return res.status(500).json({ message: "Error en la base de datos" });
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
   }
 };
