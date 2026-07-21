@@ -6,7 +6,7 @@ import { validateToken } from "../middleware/validator.middleware.js";
 const weeklyLogsRoutes = express.Router();
 
 weeklyLogsRoutes.get("/:id", validateToken, getTaskByWeek);
-weeklyLogsRoutes.put("/:id", updateWeeklyTasks);
-weeklyLogsRoutes.put("/:id/completed", completeWeeklyTasks);
+weeklyLogsRoutes.put("/:id", validateToken, updateWeeklyTasks);
+weeklyLogsRoutes.put("/:id/completed", validateToken, completeWeeklyTasks);
 
 export { weeklyLogsRoutes };

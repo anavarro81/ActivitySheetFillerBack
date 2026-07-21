@@ -21,7 +21,7 @@ export const createUser = async (userData) => {
     const existingEmail = await usedEmail(email);
 
     if (existingEmail) {
-      throw createError(400, "Existing email");
+      throw createError(400, "El email ya está registrado");
     }
   }
 

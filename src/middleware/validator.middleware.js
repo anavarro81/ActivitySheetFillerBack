@@ -110,31 +110,32 @@ export const validateToken = async (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
 
   if (!authHeader) {
+    console.error('validateToken failed: token missing');    
     return res.status(401).json({ message: "no autorizado" });
   }
 
   const parts = authHeader.split(" ");
   if (parts.length !== 2 || parts[0] !== "Bearer") {
+    console.error('validateToken failed: token malformed');    
     return res.status(401).json({ message: "no autorizado" });
   }
 
   const token = parts[1];
 
-  console.log("token recibido ", token);
+  
 
   try {
     let payload;
     try {
       payload = verifySign(token);
     } catch (e) {
+      console.error('validateToken failed: error verifyng token'); 
       return res.status(401).json({ message: "no autorizado" });
     }
 
     const studentId = payload._id || payload.id;
 
     console.log("payload ", payload);
-
-    console.log("studentId ", studentId);
 
     if (!studentId) {
       return res.status(401).json({ message: "no autorizado" });
@@ -149,7 +150,7 @@ export const validateToken = async (req, res, next) => {
       return res.status(401).json({ message: "no autorizado" });
     }
 
-    console.log("studentId >> ", studentId);
+    
 
     // Attach student id to request for controllers
     req.student_id = studentId;
