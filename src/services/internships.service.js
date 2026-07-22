@@ -4,7 +4,6 @@ import User from "../models/user.model.js";
 import { generateIntershipCalendar } from "../utils/calendar.js";
 import createError from "http-errors";
 
-
 export const newInternships = async (InternshipsData) => {
   try {
     const { student_id, start_date, end_date } = InternshipsData;
@@ -47,7 +46,6 @@ export const newInternships = async (InternshipsData) => {
   } catch (error) {
     console.error("error creando las prácticas ", error);
     throw error;
-    
   }
 };
 
@@ -59,33 +57,27 @@ export const getInternshipsByStudent = async (student_id) => {
       throw createError(404, "student not found");
     }
 
-    const internships = await Internship.find({ student_id }).lean();
+    const internships = await Internship.findOne({ student_id }).lean();
 
-    const results = await Promise.all(
-      internships.map(async (intern) => {
-        const weeklyLogs = await WeeklyLog.find({
-          internship_id: intern._id,
-        })
-          // Ordenar las semanas, si no las devuelve desorneadas.
-          .sort({ week_number: 1 })
-          .lean();
+    
 
-        // ensure dates are proper ISO strings when returned
-        const weeklyLogsData = weeklyLogs.map((wl) => ({
-          week_id: wl._id,
-          week_number: wl.week_number,
-          start_date: wl.start_date,
-          end_date: wl.end_date,
-          status: wl.status,
-        }));
+    const wlog = await WeeklyLog.find({ internship_id: internships._id })
+      .sort({ week_number: 1 })
+      .lean();
 
-        return {
-          weeklyLogsData,
-        };
-      }),
-    );
+    const weeklyLog = wlog.map((wl) => ({
+      week_id: wl._id,
+      week_number: wl.week_number,
+      start_date: wl.start_date,
+      end_date: wl.end_date,
+      status: wl.status,
+    }));
 
-    return results;
+    return {
+      start_date: internships.start_date,
+      end_date: internships.end_date,
+      weeklyLog: weeklyLog,
+    };
   } catch (error) {
     console.error("error fetching internships by student", error);
     throw error;
