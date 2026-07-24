@@ -27,13 +27,30 @@ export const getInternshipsByStudent = async (req, res) => {
   try {
     // accept student id from query, header or body for flexibility
     const student_id = req.student_id;
+    let referenceDate = new Date();
+
+    
+    
+
+    if (req.query.mockDate) {
+      const newDateMockDate = new Date(req.query.mockDate);
+      
+
+      if (isNaN(newDateMockDate.getTime())) {
+        return res.status(400).json({ message: "reference Date not valid" });
+      } else {
+        referenceDate = newDateMockDate;
+      }
+    }
 
     if (!student_id) {
       return res.status(400).json({ message: "student_id is required" });
     }
 
-    const internshipWeeks =
-      await internshipServices.getInternshipsByStudent(student_id);
+    const internshipWeeks = await internshipServices.getInternshipsByStudent(
+      student_id,
+      referenceDate,
+    );
 
     return res.status(200).json(internshipWeeks);
   } catch (error) {

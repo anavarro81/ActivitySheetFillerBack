@@ -1,0 +1,30 @@
+{
+    // Debug configurations for attaching VS Code to a Node process (useful with Postman).
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Node (9229)",
+            "type": "node",
+            "request": "attach",
+            "port": 9229,
+            "address": "localhost",
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": null,
+            "protocol": "inspector",
+            "restart": false,
+            "timeout": 10000
+        },
+        {
+            "name": "Launch Node (app.js)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/app.js",
+            "cwd": "${workspaceFolder}",
+            "runtimeArgs": ["--inspect=9229"],
+            "console": "integratedTerminal",
+            "env": { "NODE_ENV": "development" },
+            "skipFiles": ["<node_internals>/**"]
+        }
+    ]
+}
+        
