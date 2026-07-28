@@ -1,5 +1,6 @@
 import WeeklyLog from "../models/weeklyLogs.model.js";
 import Internship from "../models/intenships.model.js";
+import User from "../models/user.model.js";
 import createError from "http-errors";
 
 export const getTaskByWeek = async (weekID, studentId) => {
@@ -15,13 +16,12 @@ export const getTaskByWeek = async (weekID, studentId) => {
       _id: weekTask.internship_id,
     });
 
-    if (!intenships) {      
+    if (!intenships) {
       throw createError(404, "intenships not found");
     }
 
-
     if (intenships.student_id != studentId) {
-      throw createError(403, "Access denied");     
+      throw createError(403, "Access denied");
     }
 
     return {
@@ -70,3 +70,42 @@ export const completeWeeklyTasks = async (weekId, weekData) => {
     throw error;
   }
 };
+
+export const downloadWord = async (weekID) => {
+  const weekTasks = await WeeklyLog.findOne({ _id: weekID });
+
+  if (!weekTasks) {
+    throw createError(404, "week not found");
+  }
+
+  // Obtengo las practicas
+  const intenships = await Internship.findOne({
+    _id: weekTasks.internship_id,
+  });
+
+  if (!intenships) {
+    throw createError(404, "intenships not found");
+  }
+
+  
+
+  // Obtengo los datos del alumno
+  const student = await User.findOne({ _id: intenships.student_id });
+
+  return {
+    name: student.first_name,
+    lastname: student.last_name,
+    start_date: intenships.start_date,
+    end_date: intenships.end_date,
+    daily_logs: weekTasks.daily_logs,
+  };
+};
+
+// {
+//   "_id:": "6a4e71476c3ad5..." ,
+//   "student_id": "6a4e71476c3ad5fca8d5e6cb",
+//   "company_name": "PinkStone",
+//   "start_date": "2026-06-08",
+//   "end_date": "2026-07-02",
+//   "status": "active"
+// }

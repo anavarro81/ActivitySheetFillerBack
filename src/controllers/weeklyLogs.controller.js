@@ -55,3 +55,22 @@ export const completeWeeklyTasks = async (req, res) => {
       .json({ message: error.message || "Internal server" });
   }
 };
+
+export const downloadWord = async (req, res) => {
+  const weekId = req.params.id;
+
+
+  try {
+    const wordInfo = await weekLogServices.downloadWord(weekId);
+
+    
+
+    res.status(200).json(wordInfo);
+  } catch (error) {
+    console.error("error recuperando datos del word ", error);
+    const status = error.status || 500;
+    return res
+      .status(status)
+      .json({ message: error.message || "Internal server" });
+  }
+};
