@@ -135,7 +135,7 @@ export const validateToken = async (req, res, next) => {
 
     const studentId = payload._id || payload.id;
 
-    console.log("payload ", payload);
+    
 
     if (!studentId) {
       return res.status(401).json({ message: "no autorizado" });

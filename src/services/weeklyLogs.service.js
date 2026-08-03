@@ -106,7 +106,7 @@ export const downloadWord = async (weekID) => {
       })),
     };
 
-    console.log("wordData ", wordData);
+    
 
     const wordDonwload = await createWordDocument(wordData);
 

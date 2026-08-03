@@ -20,11 +20,8 @@ export const createWordDocument = async (wordData) => {
     daily_logs,
   };
 
-  console.log("templateData ", templateData);
+  
 
-  for (const day of daily_logs) {
-    console.log("day ", day);
-  }
 
   const buffer = await createReport({
     template,

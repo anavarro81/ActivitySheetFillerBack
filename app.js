@@ -13,7 +13,9 @@ connect();
 
 app.use(
   cors({
-    origin: "*",
+    origin: 'http://localhost:5173',
+    // Permite leer Content-Disposition desde Front).
+    exposedHeaders: ['Content-Disposition'],
     credential: true,
   }),
 );
