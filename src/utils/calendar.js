@@ -1,3 +1,18 @@
+const months = [
+  "enero",
+  "febrero",
+  "marzo",
+  "abril",
+  "mayo",
+  "junio",
+  "julio",
+  "agosto",
+  "septiembre",
+  "octubre",
+  "noviembre",
+  "diciembre",
+];
+
 export const generateIntershipCalendar = (startDateISO, endDateISO) => {
   if (!startDateISO) throw new Error("startDate not valid");
 
@@ -16,16 +31,12 @@ export const generateIntershipCalendar = (startDateISO, endDateISO) => {
 
   const totalWeeks = calculateWeeksNumber(startDate, endDate);
 
-  
-
   while (current_date <= endDate) {
     let newDate = new Date(current_date);
     fechas.push(newDate);
 
     if (newDate.getDay() != 5) {
       if (current_date.getTime() == endDate.getTime()) {
-        
-
         const currentWeek = {
           week: week + 1,
           dailyLogWeek: fechas,
@@ -48,8 +59,6 @@ export const generateIntershipCalendar = (startDateISO, endDateISO) => {
       fechas = [];
     }
   }
-
-  
 
   return result;
 };
@@ -85,5 +94,12 @@ export const calculateWeeksNumber = (startDate, endDate) => {
   return totalDays / 7 + 1;
 };
 
+// Formatea el perido de practicas de este modo: Del 29 de junio al 2 de julio para mostrarlo en el documento Word.
+export const formatIntershipPeriod = (start_date, end_date) => {
+  // outputPeriodString = `Del ${firt_day} del ${start_month} al ${last_day} del ${end_month}`
 
+  const startDateIso = new Date(start_date);
+  const endDateIso = new Date(end_date);
 
+  return `Del ${startDateIso.getDate()} del ${months[startDateIso.getMonth()]} al ${endDateIso.getDate()} del ${months[endDateIso.getMonth()]}`;
+};

@@ -59,11 +59,26 @@ export const completeWeeklyTasks = async (req, res) => {
 export const downloadWord = async (req, res) => {
   const weekId = req.params.id;
 
-
   try {
-    const wordInfo = await weekLogServices.downloadWord(weekId);
+    
+    const wordDonwload = await weekLogServices.downloadWord(weekId);
 
     
+    
+    // Cabeceras estandar para indicar que es un fichero binario y forzar su descarga. 
+    // Indica que es un fichero descargable y se indica su nombre. 
+    res.setHeader(
+      "content-disposition",
+      "attachment; filename=hoja_actividad.docx",
+    );
+    
+    // Indica el tipo de archivo que se manda
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    );
+
+    return res.send(wordDonwload);
 
     res.status(200).json(wordInfo);
   } catch (error) {

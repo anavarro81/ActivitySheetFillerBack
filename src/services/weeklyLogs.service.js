@@ -2,6 +2,8 @@ import WeeklyLog from "../models/weeklyLogs.model.js";
 import Internship from "../models/intenships.model.js";
 import User from "../models/user.model.js";
 import createError from "http-errors";
+import { createWordDocument } from "../utils/createWord.js";
+import { formatIntershipPeriod } from "../utils/calendar.js";
 
 export const getTaskByWeek = async (weekID, studentId) => {
   try {
@@ -72,40 +74,46 @@ export const completeWeeklyTasks = async (weekId, weekData) => {
 };
 
 export const downloadWord = async (weekID) => {
-  const weekTasks = await WeeklyLog.findOne({ _id: weekID });
+  try {
+    const weekTasks = await WeeklyLog.findOne({ _id: weekID });
 
-  if (!weekTasks) {
-    throw createError(404, "week not found");
+    if (!weekTasks) {
+      throw createError(404, "week not found");
+    }
+
+    // Obtengo las practicas
+    const intenships = await Internship.findOne({
+      _id: weekTasks.internship_id,
+    });
+
+    if (!intenships) {
+      throw createError(404, "intenships not found");
+    }
+
+    // Obtengo los datos del alumno
+    const student = await User.findOne({ _id: intenships.student_id });
+
+    const wordData = {
+      name: student.first_name,
+      lastname: student.last_name,
+      internship_period: formatIntershipPeriod(
+        intenships.start_date,
+        intenships.end_date,
+      ),
+      daily_logs: weekTasks.daily_logs.map((task) => ({
+        date: new Date(task.date).toLocaleDateString("es-ES"),
+        tasks: task.tasks,
+      })),
+    };
+
+    console.log("wordData ", wordData);
+
+    const wordDonwload = await createWordDocument(wordData);
+
+    
+
+    return wordDonwload;
+  } catch (error) {
+    throw error;
   }
-
-  // Obtengo las practicas
-  const intenships = await Internship.findOne({
-    _id: weekTasks.internship_id,
-  });
-
-  if (!intenships) {
-    throw createError(404, "intenships not found");
-  }
-
-  
-
-  // Obtengo los datos del alumno
-  const student = await User.findOne({ _id: intenships.student_id });
-
-  return {
-    name: student.first_name,
-    lastname: student.last_name,
-    start_date: intenships.start_date,
-    end_date: intenships.end_date,
-    daily_logs: weekTasks.daily_logs,
-  };
 };
-
-// {
-//   "_id:": "6a4e71476c3ad5..." ,
-//   "student_id": "6a4e71476c3ad5fca8d5e6cb",
-//   "company_name": "PinkStone",
-//   "start_date": "2026-06-08",
-//   "end_date": "2026-07-02",
-//   "status": "active"
-// }
