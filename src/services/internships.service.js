@@ -68,19 +68,19 @@ const calculateStatus = (referenceDate, weekStartDate, weekEndDate, status) => {
     throw createError(400, "week end date not valid");
   }
 
+  if (status == "Completado") return status;
+
+  // Practicas no iniciadas hoy < inicio practicas
   if (ReferenceDateMls < WeekStartDateMls) {
     return "Pendiente";
   }
 
+  // Semana actual hoy entre fecha inicio y fin.
   if (
     ReferenceDateMls >= WeekStartDateMls &&
     ReferenceDateMls <= WeekEndDateMls
   ) {
     return "En curso";
-  }
-
-  if (WeekStartDateMls > ReferenceDateMls) {
-    return "Pendiente";
   }
 
   if (WeekEndDateMls > ReferenceDateMls) {
@@ -91,15 +91,7 @@ const calculateStatus = (referenceDate, weekStartDate, weekEndDate, status) => {
     }
   }
 
-  // Valido que me llegan fechas con formato correcto.
-
-  // fecha actual < a fecInicioSem	Pendiente
-  // fecha actual ≥ fecInicioSem ≤ fecFinSem 	En curso
-  // fecInicioSem > fecha actual	Pendiente (semanas futuras)
-  // fec actual > fecha fin semana	Pendiente (si no la cerró)
-  //                                Completa si la cerro.
-
-  return "Pendiente";
+  // return "Pendiente";
 };
 
 export const getInternshipsByStudent = async (
