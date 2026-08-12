@@ -74,13 +74,13 @@ export const completeWeeklyTasks = async (weekId, weekData) => {
 };
 
 export const downloadWord = async (weekID) => {
-  console.log("entro en downloadWord");
+  
 
   try {
     const weekTasks = await WeeklyLog.findOne({ _id: weekID });
 
     if (!weekTasks) {
-      console.error("week not found");
+      
       throw createError(404, "week not found");
     }
 
@@ -91,13 +91,13 @@ export const downloadWord = async (weekID) => {
 
     if (!intenships) {
       throw createError(404, "intenships not found");
-      console.error("intenships not found");
+      
     }
 
     // Obtengo los datos del alumno
     const student = await User.findOne({ _id: intenships.student_id });
 
-    console.log("student ", student);
+    
 
     const wordData = {
       name: student.first_name,
@@ -112,11 +112,11 @@ export const downloadWord = async (weekID) => {
       })),
     };
 
-    console.log("wordData ", wordData);
+    
 
     const wordDonwload = await createWordDocument(wordData);
 
-    console.log("wordDonwload ", wordDonwload);
+    
 
     return wordDonwload;
   } catch (error) {

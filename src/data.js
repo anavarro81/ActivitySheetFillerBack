@@ -11,7 +11,7 @@ export const alumnos = [
     first_name: "Ana",
     last_name: "Gómez López",
     email: "ana.gomez@email.com",
-    dni: "12345678Z",
+    dni: "74839201Z",
     role: "student",
     password: "123Abc99@",
   },
@@ -20,6 +20,14 @@ export const alumnos = [
     last_name: "Martínez Soto",
     email: "luis.martinez@email.com",
     dni: "87654321X",
+    role: "student",
+    password: "123Abc99@",
+  },
+  {
+    first_name: "Antonio",
+    last_name: "Perez Gomez",
+    email: "antonio.perez@email.com",
+    dni: "12345678Z",
     role: "student",
     password: "123Abc99@",
   },
@@ -42,6 +50,12 @@ export const practicas = [
     company_name: "Amazon",
     start_date: "2026-07-01",
     end_date: "2026-09-30",
+    status: "active",
+  },
+  {
+    company_name: "Microsoft",
+    start_date: "2026-08-03",
+    end_date: "2026-08-31",
     status: "active",
   },
 ];
@@ -297,6 +311,78 @@ export const tareas = [
             order: 1,
           },
           { description: "Documentar pasos de despliegue en README", order: 2 },
+        ],
+        absence: null,
+      },
+    ],
+  },
+  // Tareas para el cuarto alumno (Antonio): semana 2026-08-03 a 2026-08-07
+  {
+    daily_logs: [
+      {
+        date: "2026-08-03",
+        tasks: [
+          {
+            description: "Implementación de endpoint en Node.js para la API",
+            order: 1,
+          },
+          {
+            description: "Escribir pruebas unitarias con Jest para el endpoint",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-04",
+        tasks: [
+          {
+            description: "Refactorización de servicio para manejo de errores",
+            order: 1,
+          },
+          { description: "Documentación de la API y casos de uso", order: 2 },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-05",
+        tasks: [
+          {
+            description: "Optimización de consultas en la base de datos",
+            order: 1,
+          },
+          {
+            description: "Implementación de índices para búsquedas frecuentes",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-06",
+        tasks: [
+          {
+            description: "Integración del frontend con los nuevos endpoints",
+            order: 1,
+          },
+          {
+            description: "Corrección de bugs detectados en la integración",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-07",
+        tasks: [
+          {
+            description: "Revisión de rendimiento y profiling de la aplicación",
+            order: 1,
+          },
+          {
+            description: "Escribir documentación de despliegue para staging",
+            order: 2,
+          },
         ],
         absence: null,
       },

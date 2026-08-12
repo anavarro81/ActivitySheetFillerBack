@@ -6,6 +6,7 @@ import { alumnos, practicas, tareas } from "../data.js";
 import { createUser } from "../services/user.service.js";
 import Internship from "../models/intenships.model.js";
 import WeeklyLog from "../models/weeklyLogs.model.js";
+import User from "../models/user.model.js";
 import { generateIntershipCalendar } from "../utils/calendar.js";
 
 const SERVER = process.env.SEED_SERVER || "http://localhost:3000";
@@ -33,6 +34,18 @@ const main = async () => {
   await connect();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
+  // Limpiar las colecciones para empezar con la base de datos vacía
+  try {
+    await Promise.all([
+      Internship.deleteMany({}),
+      User.deleteMany({}),
+      WeeklyLog.deleteMany({}),
+    ]);
+    console.log("Colecciones intenships, users y weeklyLogs eliminadas.");
+  } catch (err) {
+    console.warn("Error al limpiar colecciones antes del seed:", err.message);
+  }
 
   for (let i = 0; i < alumnos.length; i++) {
     const alumno = alumnos[i];
