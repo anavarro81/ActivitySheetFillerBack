@@ -19,9 +19,8 @@ const usedEmail = async (email) => {
 
 const usedDni = async (dni) => {
   const users = await User.find({ dni: dni });
-  return users.length;  
-}
-
+  return users.length;
+};
 
 /*
 Validacion de DNI.
@@ -30,7 +29,7 @@ Validacion de DNI.
 */
 const validateDni = (dni) => {
   if (typeof dni !== "string") return false;
-  // 
+  //
   const regex = /^\d{8}[A-Za-z]$/;
   if (!regex.test(dni)) return false;
 
@@ -41,31 +40,34 @@ const validateDni = (dni) => {
   return expected === letter;
 };
 
-const validateName = (name) => { 
+const validateName = (name) => {
   if (!name) {
     return false;
   }
 
-  // (letras y números, de 3 a 10 caracteres, admite espacios (nombres compuestos))
-  const regex = /^[a-zA-Z ]{3,10}$/;
+  // acepta letras con tildes y espacios (nombres compuestos)
+  const regex = /^[a-zA-ZÁÉÍÓÚáéíóúÜü ]{3,10}$/;
 
   return regex.test(name);
+};
 
-
-}
-
-const validateSurname = (surname) => { 
+const validateSurname = (surname) => {
   if (!surname) {
     return false;
   }
 
-  // (letras y números, de 3 a 20 caracteres). Admite espacios. 
-  const regex = /^[a-zA-Z ]{3,20}$/;
+  // acepta letras con tildes y espacios
+  const regex = /^[a-zA-ZÁÉÍÓÚáéíóúÜü ]{3,20}$/;
 
   return regex.test(surname);
+};
 
-
-}
-
-
-export { validateEmail, validatePassword, usedEmail, validateDni, validateName, validateSurname, usedDni };
+export {
+  validateEmail,
+  validatePassword,
+  usedEmail,
+  validateDni,
+  validateName,
+  validateSurname,
+  usedDni,
+};
