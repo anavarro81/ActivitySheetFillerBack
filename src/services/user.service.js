@@ -6,6 +6,7 @@ import {
   validatePassword,
   usedEmail,
   validateDni,
+  usedDni,
 } from "../utils/validator.js";
 
 import bcrypt from "bcrypt";
@@ -13,7 +14,7 @@ import bcrypt from "bcrypt";
 import { generateSign } from "../utils/jwt.js";
 
 export const createUser = async (userData) => {
-  const { email, password } = userData;
+  const { email, password, dni } = userData;
 
   const newUser = new User(userData);
 
@@ -25,6 +26,9 @@ export const createUser = async (userData) => {
     }
   }
 
+  if (!dni) throw createError(400, "El dni es obligatorio");
+
+  if (await usedEmail(dni)) throw createError(400, "Dni duplicado");
   // Se encripta la password antes de guardarla en la bbdd.
   newUser.password = bcrypt.hashSync(password, 10);
 
@@ -40,7 +44,6 @@ export const userLogin = async (userData) => {
 
   try {
     const { dni, password } = userData;
-    
 
     const user = await User.findOne({ dni: dni });
 

@@ -246,6 +246,82 @@ export const tareas = [
         ],
         absence: null,
       },
+      {
+        date: "2026-08-07",
+        tasks: [
+          {
+            description:
+              "Revisión de incidencias detectadas en las pruebas de carga",
+            order: 1,
+          },
+          {
+            description:
+              "Ajustes finales en la documentación técnica del proyecto",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-10",
+        tasks: [
+          {
+            description:
+              "Revisión de logs de la aplicación y detección de errores",
+            order: 1,
+          },
+          {
+            description:
+              "Ajuste de consultas SQL para optimizar tiempos de respuesta",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-11",
+        tasks: [
+          {
+            description:
+              "Implementación de validaciones adicionales en el backend",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-12",
+        tasks: [
+          {
+            description:
+              "Refactorización de componentes para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica del proyecto",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-13",
+        tasks: [
+          {
+            description: "Depuración de incidencias detectadas en integración",
+            order: 1,
+          },
+          {
+            description: "Preparación de entrega final y revisión de cambios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
     ],
   },
 
@@ -253,11 +329,275 @@ export const tareas = [
   {
     daily_logs: [
       {
+        date: "2026-07-01",
+        tasks: [
+          {
+            description: "Implementación de un servicio de validación de datos",
+            order: 1,
+          },
+          {
+            description: "Escritura de pruebas unitarias para el servicio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-02",
+        tasks: [
+          {
+            description:
+              "Refactorización de controladores para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-03",
+        tasks: [
+          {
+            description:
+              "Ajuste de consultas a la base de datos para mejorar rendimiento",
+            order: 1,
+          },
+          {
+            description: "Revisión de logs y depuración de errores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-04",
+        tasks: [
+          {
+            description: "Integración de nuevos endpoints con el frontend",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-05",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Revisión de casos límite en formularios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
         date: "2026-07-06",
         tasks: [
           {
             description: "Implementación de endpoints CRUD en Node.js",
             order: 1,
+          },
+          {
+            description: "Pruebas de integración de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-07",
+        tasks: [
+          {
+            description: "Corrección de bugs detectados en integración",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-08",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-09",
+        tasks: [
+          {
+            description: "Implementación de un servicio de validación de datos",
+            order: 1,
+          },
+          {
+            description: "Escritura de pruebas unitarias para el servicio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-10",
+        tasks: [
+          {
+            description:
+              "Refactorización de controladores para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-11",
+        tasks: [
+          {
+            description:
+              "Ajuste de consultas a la base de datos para mejorar rendimiento",
+            order: 1,
+          },
+          {
+            description: "Revisión de logs y depuración de errores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-12",
+        tasks: [
+          {
+            description: "Integración de nuevos endpoints con el frontend",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-13",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Revisión de casos límite en formularios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-14",
+        tasks: [
+          {
+            description: "Optimización de consultas SQL repetitivas",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios en el repositorio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-15",
+        tasks: [
+          {
+            description: "Corrección de bugs detectados en integración",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-16",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-17",
+        tasks: [
+          {
+            description: "Implementación de un servicio de validación de datos",
+            order: 1,
+          },
+          {
+            description: "Escritura de pruebas unitarias para el servicio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-18",
+        tasks: [
+          {
+            description:
+              "Refactorización de controladores para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-19",
+        tasks: [
+          {
+            description:
+              "Ajuste de consultas a la base de datos para mejorar rendimiento",
+            order: 1,
+          },
+          {
+            description: "Revisión de logs y depuración de errores",
+            order: 2,
           },
         ],
         absence: null,
@@ -278,11 +618,402 @@ export const tareas = [
         absence: null,
       },
       {
+        date: "2026-07-21",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Revisión de casos límite en formularios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-22",
+        tasks: [
+          {
+            description: "Optimización de consultas SQL repetitivas",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios en el repositorio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-23",
+        tasks: [
+          {
+            description: "Corrección de bugs detectados en integración",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-24",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-25",
+        tasks: [
+          {
+            description: "Implementación de un servicio de validación de datos",
+            order: 1,
+          },
+          {
+            description: "Escritura de pruebas unitarias para el servicio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-26",
+        tasks: [
+          {
+            description:
+              "Refactorización de controladores para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-27",
+        tasks: [
+          {
+            description:
+              "Ajuste de consultas a la base de datos para mejorar rendimiento",
+            order: 1,
+          },
+          {
+            description: "Revisión de logs y depuración de errores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-28",
+        tasks: [
+          {
+            description: "Integración de nuevos endpoints con el frontend",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-29",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Revisión de casos límite en formularios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-30",
+        tasks: [
+          {
+            description: "Optimización de consultas SQL repetitivas",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios en el repositorio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-31",
+        tasks: [
+          {
+            description: "Corrección de bugs detectados en integración",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-01",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-02",
+        tasks: [
+          {
+            description: "Implementación de un servicio de validación de datos",
+            order: 1,
+          },
+          {
+            description: "Escritura de pruebas unitarias para el servicio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
         date: "2026-08-03",
         tasks: [
           {
             description: "Optimizar consulta de búsqueda con índices",
             order: 1,
+          },
+          {
+            description: "Revisión y ajuste de validaciones en los endpoints",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-04",
+        tasks: [
+          {
+            description:
+              "Ajuste de consultas a la base de datos para mejorar rendimiento",
+            order: 1,
+          },
+          {
+            description: "Revisión de logs y depuración de errores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-05",
+        tasks: [
+          {
+            description: "Integración de nuevos endpoints con el frontend",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-06",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Revisión de casos límite en formularios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-07",
+        tasks: [
+          {
+            description: "Optimización de consultas SQL repetitivas",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios en el repositorio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-08",
+        tasks: [
+          {
+            description: "Corrección de bugs detectados en integración",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-09",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-10",
+        tasks: [
+          {
+            description: "Implementación de un servicio de validación de datos",
+            order: 1,
+          },
+          {
+            description: "Escritura de pruebas unitarias para el servicio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-11",
+        tasks: [
+          {
+            description:
+              "Refactorización de controladores para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-12",
+        tasks: [
+          {
+            description:
+              "Ajuste de consultas a la base de datos para mejorar rendimiento",
+            order: 1,
+          },
+          {
+            description: "Revisión de logs y depuración de errores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-13",
+        tasks: [
+          {
+            description: "Integración de nuevos endpoints con el frontend",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-14",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Revisión de casos límite en formularios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-15",
+        tasks: [
+          {
+            description: "Optimización de consultas SQL repetitivas",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios en el repositorio",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-16",
+        tasks: [
+          {
+            description: "Corrección de bugs detectados en integración",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-17",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
           },
         ],
         absence: null,
@@ -290,15 +1021,391 @@ export const tareas = [
     ],
   },
 
-  // Tareas para el tercer alumno: unas tareas puntuales (fechas <= 2026-08-06)
+  // Tareas para el tercer alumno: fechas <= 2026-08-17
   {
     daily_logs: [
+      {
+        date: "2026-07-01",
+        tasks: [
+          {
+            description: "Implementación de endpoints CRUD en Node.js",
+            order: 1,
+          },
+          {
+            description: "Pruebas unitarias para servicios de usuarios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-02",
+        tasks: [
+          {
+            description:
+              "Refactorización de la capa de servicios para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-03",
+        tasks: [
+          {
+            description: "Optimización de consultas a la base de datos",
+            order: 1,
+          },
+          {
+            description: "Revisión de índices y rendimiento de lecturas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-04",
+        tasks: [
+          {
+            description: "Integración de validaciones en los formularios",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-05",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Corrección de errores en controladores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-06",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
       {
         date: "2026-07-07",
         tasks: [
           {
             description: "Implementación de autenticación JWT en el backend",
             order: 1,
+          },
+          {
+            description:
+              "Refactorización de controladores para mejorar la mantenibilidad",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-08",
+        tasks: [
+          {
+            description: "Preparación de despliegue y verificación en staging",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios realizados",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-09",
+        tasks: [
+          {
+            description: "Implementación de endpoints CRUD en Node.js",
+            order: 1,
+          },
+          {
+            description: "Pruebas unitarias para servicios de usuarios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-10",
+        tasks: [
+          {
+            description:
+              "Refactorización de la capa de servicios para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-11",
+        tasks: [
+          {
+            description: "Optimización de consultas a la base de datos",
+            order: 1,
+          },
+          {
+            description: "Revisión de índices y rendimiento de lecturas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-12",
+        tasks: [
+          {
+            description: "Integración de validaciones en los formularios",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-13",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Corrección de errores en controladores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-14",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-15",
+        tasks: [
+          {
+            description: "Ajuste de logs y manejo de errores del backend",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas unitarias",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-16",
+        tasks: [
+          {
+            description: "Preparación de despliegue y verificación en staging",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios realizados",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-17",
+        tasks: [
+          {
+            description: "Implementación de endpoints CRUD en Node.js",
+            order: 1,
+          },
+          {
+            description: "Pruebas unitarias para servicios de usuarios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-18",
+        tasks: [
+          {
+            description:
+              "Refactorización de la capa de servicios para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-19",
+        tasks: [
+          {
+            description: "Optimización de consultas a la base de datos",
+            order: 1,
+          },
+          {
+            description: "Revisión de índices y rendimiento de lecturas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-20",
+        tasks: [
+          {
+            description: "Integración de validaciones en los formularios",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-21",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Corrección de errores en controladores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-22",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-23",
+        tasks: [
+          {
+            description: "Ajuste de logs y manejo de errores del backend",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas unitarias",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-24",
+        tasks: [
+          {
+            description: "Preparación de despliegue y verificación en staging",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios realizados",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-25",
+        tasks: [
+          {
+            description: "Implementación de endpoints CRUD en Node.js",
+            order: 1,
+          },
+          {
+            description: "Pruebas unitarias para servicios de usuarios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-26",
+        tasks: [
+          {
+            description:
+              "Refactorización de la capa de servicios para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-27",
+        tasks: [
+          {
+            description: "Optimización de consultas a la base de datos",
+            order: 1,
+          },
+          {
+            description: "Revisión de índices y rendimiento de lecturas",
+            order: 2,
           },
         ],
         absence: null,
@@ -310,7 +1417,295 @@ export const tareas = [
             description: "Integrar pipeline de CI para pruebas automáticas",
             order: 1,
           },
-          { description: "Documentar pasos de despliegue en README", order: 2 },
+          {
+            description: "Documentar pasos de despliegue en README",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-29",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Corrección de errores en controladores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-30",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-07-31",
+        tasks: [
+          {
+            description: "Ajuste de logs y manejo de errores del backend",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas unitarias",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-01",
+        tasks: [
+          {
+            description: "Preparación de despliegue y verificación en staging",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios realizados",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-02",
+        tasks: [
+          {
+            description: "Implementación de endpoints CRUD en Node.js",
+            order: 1,
+          },
+          {
+            description: "Pruebas unitarias para servicios de usuarios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-03",
+        tasks: [
+          {
+            description:
+              "Refactorización de la capa de servicios para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-04",
+        tasks: [
+          {
+            description: "Optimización de consultas a la base de datos",
+            order: 1,
+          },
+          {
+            description: "Revisión de índices y rendimiento de lecturas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-05",
+        tasks: [
+          {
+            description: "Integración de validaciones en los formularios",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-06",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Corrección de errores en controladores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-07",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-08",
+        tasks: [
+          {
+            description: "Ajuste de logs y manejo de errores del backend",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas unitarias",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-09",
+        tasks: [
+          {
+            description: "Preparación de despliegue y verificación en staging",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios realizados",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-10",
+        tasks: [
+          {
+            description: "Implementación de endpoints CRUD en Node.js",
+            order: 1,
+          },
+          {
+            description: "Pruebas unitarias para servicios de usuarios",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-11",
+        tasks: [
+          {
+            description:
+              "Refactorización de la capa de servicios para mejorar la mantenibilidad",
+            order: 1,
+          },
+          {
+            description: "Actualización de documentación técnica de la API",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-12",
+        tasks: [
+          {
+            description: "Optimización de consultas a la base de datos",
+            order: 1,
+          },
+          {
+            description: "Revisión de índices y rendimiento de lecturas",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-13",
+        tasks: [
+          {
+            description: "Integración de validaciones en los formularios",
+            order: 1,
+          },
+          {
+            description: "Pruebas manuales del flujo de autenticación",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-14",
+        tasks: [
+          {
+            description: "Implementación de middleware de autorización",
+            order: 1,
+          },
+          {
+            description: "Corrección de errores en controladores",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-15",
+        tasks: [
+          {
+            description:
+              "Desarrollo de utilidades para transformación de datos",
+            order: 1,
+          },
+          {
+            description: "Validación de respuestas de la API con Postman",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-16",
+        tasks: [
+          {
+            description: "Ajuste de logs y manejo de errores del backend",
+            order: 1,
+          },
+          {
+            description: "Revisión de cobertura de pruebas unitarias",
+            order: 2,
+          },
+        ],
+        absence: null,
+      },
+      {
+        date: "2026-08-17",
+        tasks: [
+          {
+            description: "Preparación de despliegue y verificación en staging",
+            order: 1,
+          },
+          {
+            description: "Documentación de cambios realizados",
+            order: 2,
+          },
         ],
         absence: null,
       },

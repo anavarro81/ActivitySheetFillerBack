@@ -17,6 +17,11 @@ const usedEmail = async (email) => {
   return users.length;
 };
 
+const usedDni = async (dni) => {
+  const users = await User.find({ dni: dni });
+  return users.length;  
+}
+
 
 /*
 Validacion de DNI.
@@ -63,4 +68,4 @@ const validateSurname = (surname) => {
 }
 
 
-export { validateEmail, validatePassword, usedEmail, validateDni, validateName, validateSurname };
+export { validateEmail, validatePassword, usedEmail, validateDni, validateName, validateSurname, usedDni };
