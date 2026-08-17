@@ -11,7 +11,7 @@ export const alumnos = [
     first_name: "Ana",
     last_name: "Gómez López",
     email: "ana.gomez@email.com",
-    dni: "74839201Z",
+    dni: "74839201F",
     role: "student",
     password: "123Abc99@",
   },

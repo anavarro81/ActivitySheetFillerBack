@@ -77,7 +77,7 @@ export const downloadWord = async (weekID) => {
   
 
   try {
-    const weekTasks = await WeeklyLog.findOne({ _id: weekID });
+    const weekTasks = await WeeklyLog.findOne({ _id: weekID }).lean();
 
     if (!weekTasks) {
       
@@ -87,7 +87,7 @@ export const downloadWord = async (weekID) => {
     // Obtengo las practicas
     const intenships = await Internship.findOne({
       _id: weekTasks.internship_id,
-    });
+    }).lean();
 
     if (!intenships) {
       throw createError(404, "intenships not found");
@@ -95,16 +95,18 @@ export const downloadWord = async (weekID) => {
     }
 
     // Obtengo los datos del alumno
-    const student = await User.findOne({ _id: intenships.student_id });
+    const student = await User.findOne({ _id: intenships.student_id }).lean();
 
-    
+    const daysOfWeek = weekTasks.daily_logs.length
+    const weekStartDate = weekTasks.daily_logs[0].date
+    const weekEndDate = weekTasks.daily_logs[daysOfWeek-1].date
 
     const wordData = {
       name: student.first_name,
       lastname: student.last_name,
       internship_period: formatIntershipPeriod(
-        intenships.start_date,
-        intenships.end_date,
+        weekStartDate,
+        weekEndDate,
       ),
       daily_logs: weekTasks.daily_logs.map((task) => ({
         date: new Date(task.date).toLocaleDateString("es-ES"),
