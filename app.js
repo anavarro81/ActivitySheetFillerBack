@@ -26,6 +26,11 @@ app.use("/users", userRoutes);
 app.use("/internships", internshipRoutes);
 app.use("/weekly-logs", weeklyLogsRoutes);
 
+app.get("/health", (_req, res) => {
+  res.status(200).json({ message: "Backend funcionando" });
+});
+
+
 const PORT = process.env.PORT || 3000;
 
 const server = app.listen(PORT, () => {
