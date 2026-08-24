@@ -31,17 +31,17 @@ export const getInternshipsByStudent = async (req, res) => {
 
     
     
-
-    if (req.query.mockDate) {
-      const newDateMockDate = new Date(req.query.mockDate);
+    // Solo para pruebas en DESA, permite indicar una fecha como la fecha del día. 
+    // if (req.query.mockDate) {
+    //   const newDateMockDate = new Date(req.query.mockDate);
       
 
-      if (isNaN(newDateMockDate.getTime())) {
-        return res.status(400).json({ message: "reference Date not valid" });
-      } else {
-        referenceDate = newDateMockDate;
-      }
-    }
+    //   if (isNaN(newDateMockDate.getTime())) {
+    //     return res.status(400).json({ message: "reference Date not valid" });
+    //   } else {
+    //     referenceDate = newDateMockDate;
+    //   }
+    // }
 
     if (!student_id) {
       return res.status(400).json({ message: "student_id is required" });
