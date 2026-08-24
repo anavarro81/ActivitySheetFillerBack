@@ -14,7 +14,7 @@ connect();
 
 // Indicar a Express que confíe en el primer proxy (Vercel, Nginx, etc.)
 
-// app.set('trust proxy', 1);
+app.set("trust proxy", 1);
 
 app.use(
   cors({
