@@ -12,6 +12,10 @@ const app = express();
 // Conecta a la BBDD
 connect();
 
+// Indicar a Express que confíe en el primer proxy (Vercel, Nginx, etc.)
+
+app.set('trust proxy', 1);
+
 app.use(
   cors({
     origin: 'http://localhost:5173',
