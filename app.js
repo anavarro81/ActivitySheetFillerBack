@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import helmet from "helmet"
 import { connect } from "./src/bd.js";
 
 import { userRoutes } from "./src/routes/user.routes.js";
@@ -16,10 +17,10 @@ app.use(
     origin: 'http://localhost:5173',
     // Permite leer Content-Disposition desde Front).
     exposedHeaders: ['Content-Disposition'],
-    credential: true,
+    credentials: true,
   }),
 );
-
+app.use(helmet())
 app.use(express.json());
 
 app.use("/users", userRoutes);
