@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import helmet from "helmet"
+import helmet from "helmet";
 import { connect } from "./src/bd.js";
 
 import { userRoutes } from "./src/routes/user.routes.js";
@@ -14,17 +14,17 @@ connect();
 
 // Indicar a Express que confíe en el primer proxy (Vercel, Nginx, etc.)
 
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: "http://localhost:5173",
     // Permite leer Content-Disposition desde Front).
-    exposedHeaders: ['Content-Disposition'],
+    exposedHeaders: ["Content-Disposition"],
     credentials: true,
   }),
 );
-app.use(helmet())
+app.use(helmet());
 app.use(express.json());
 
 app.use("/users", userRoutes);
@@ -34,7 +34,6 @@ app.use("/weekly-logs", weeklyLogsRoutes);
 app.get("/health", (_req, res) => {
   res.status(200).json({ message: "Backend funcionando" });
 });
-
 
 const PORT = process.env.PORT || 3000;
 
