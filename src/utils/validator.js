@@ -62,6 +62,27 @@ const validateSurname = (surname) => {
   return regex.test(surname);
 };
 
+// Solo puede completar la semana el último dia de la seman o en la fecha de fin de prácticas.
+export const canCompleteWeek = (
+  currentDate,
+  weeekEndDate,
+  internshipEndDate,
+) => {
+  console.log("currentDate >> ", currentDate);
+  console.log("weeekEndDate >> ", weeekEndDate);
+  console.log("internshipEndDate >> ", internshipEndDate);
+
+  const current = new Date(currentDate).setUTCHours(0, 0, 0, 0);
+  const weekend = new Date(weeekEndDate).setUTCHours(0, 0, 0, 0);
+  const interShipEnd = new Date(internshipEndDate).setUTCHours(0, 0, 0, 0);
+
+  console.log("current ", current);
+  console.log("weekend ", weekend);
+  console.log("interShipEnd", interShipEnd);
+
+  return current === weekend || current === interShipEnd;
+};
+
 export {
   validateEmail,
   validatePassword,

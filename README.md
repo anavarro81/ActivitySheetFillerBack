@@ -75,5 +75,28 @@ Despues responde con el `Buffer` generado por `docx-templates`.
 5. `createWordDocument` renderiza la plantilla y devuelve el `.docx`.
 6. El navegador descarga `hoja_actividad.docx`.
 
+## Generación de datos de prueba 🧪
+
+
+Script de inicialización de datos para entorno de desarrollo y pruebas.  
+
+El script permite crear un usuario con semanas editables y con el documento word descargable, independientemented de cuando se ejecute ya que toma como referencia el día actual y genera un periodo de practicas de cuatro semanas en base al mmismo:
+
+  - **Semana 1 (Pasada):** Estado *Completado* (con 2 tareas diarias aleatorias de programación).
+  - **Semana 2 (Pasada):** Estado *Pendiente* (con 2 tareas diarias aleatorias de programación).
+  - **Semana 3 (Actual):** Estado *En Curso* (sin tareas informadas).
+  - **Semana 4 (Futura):** Estado *Pendiente* (sin tareas informadas).
+
+
+
+
+Realiza las siguientes acciones:
+
+- **Limpieza de estado previo:** Busca y elimina el usuario de prueba fijo (`elena.lopez...`) junto con sus prácticas y registros semanales asociados si ya existían, garantizando una ejecución idempotente.
+- **Creación de usuario:** Da de alta un estudiante fijo con credenciales predefinidas.
+- **Asignación de prácticas:** Genera un registro de prácticas activas en la empresa *Indra* con un rango de 4 semanas centrado en la fecha actual.
+- **Generación de registros semanales (`WeeklyLogs`):** Crea una línea temporal de 4 semanas con diferentes estados:
+
+Ejecutar: ```npm run seed-user``` 
 
 

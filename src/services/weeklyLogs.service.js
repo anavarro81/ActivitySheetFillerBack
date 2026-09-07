@@ -3,7 +3,8 @@ import Internship from "../models/intenships.model.js";
 import User from "../models/user.model.js";
 import createError from "http-errors";
 import { createWordDocument } from "../utils/createWord.js";
-import { formatIntershipPeriod } from "../utils/calendar.js";
+import { formatIntershipPeriod, getFriday } from "../utils/calendar.js";
+import { canCompleteWeek } from "../utils/validator.js";
 
 export const getTaskByWeek = async (weekID, studentId) => {
   try {
@@ -58,11 +59,26 @@ export const updateWeeklyTasks = async (weekId, weekData) => {
 
 export const completeWeeklyTasks = async (weekId, weekData) => {
   try {
-    await updateWeeklyTasks(weekId, weekData);
-
     const week = await WeeklyLog.findOne({ _id: weekId });
 
     if (!week) throw createError(404, "week not found");
+
+    const internship = await Internship.findOne({ _id: week.internship_id });
+
+    const currentDate = new Date();
+
+    console.log("internship ", internship);
+    console.log("currentDate ", currentDate);
+    console.log("internship.end_date ", internship.end_date);
+
+    if (
+      !canCompleteWeek(currentDate, getFriday(currentDate), internship.end_date)
+    ) {
+      console.log("no puede completar la semana");
+      throw createError(400, "Cannot complete before deadline");
+    }
+
+    await updateWeeklyTasks(weekId, weekData);
 
     week.status = "Completado";
 
@@ -74,13 +90,10 @@ export const completeWeeklyTasks = async (weekId, weekData) => {
 };
 
 export const downloadWord = async (weekID) => {
-  
-
   try {
     const weekTasks = await WeeklyLog.findOne({ _id: weekID }).lean();
 
     if (!weekTasks) {
-      
       throw createError(404, "week not found");
     }
 
@@ -91,34 +104,26 @@ export const downloadWord = async (weekID) => {
 
     if (!intenships) {
       throw createError(404, "intenships not found");
-      
     }
 
     // Obtengo los datos del alumno
     const student = await User.findOne({ _id: intenships.student_id }).lean();
 
-    const daysOfWeek = weekTasks.daily_logs.length
-    const weekStartDate = weekTasks.daily_logs[0].date
-    const weekEndDate = weekTasks.daily_logs[daysOfWeek-1].date
+    const daysOfWeek = weekTasks.daily_logs.length;
+    const weekStartDate = weekTasks.daily_logs[0].date;
+    const weekEndDate = weekTasks.daily_logs[daysOfWeek - 1].date;
 
     const wordData = {
       name: student.first_name,
       lastname: student.last_name,
-      internship_period: formatIntershipPeriod(
-        weekStartDate,
-        weekEndDate,
-      ),
+      internship_period: formatIntershipPeriod(weekStartDate, weekEndDate),
       daily_logs: weekTasks.daily_logs.map((task) => ({
         date: new Date(task.date).toLocaleDateString("es-ES"),
         tasks: task.tasks,
       })),
     };
 
-    
-
     const wordDonwload = await createWordDocument(wordData);
-
-    
 
     return wordDonwload;
   } catch (error) {

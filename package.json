@@ -6,7 +6,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "seed-alumnos": "node src/scripts/seeds.js"
+    "seed-alumnos": "node src/scripts/seeds.js",
+    "seed-user": "node src/scripts/generateUser.js"
   },
   "repository": {
     "type": "git",

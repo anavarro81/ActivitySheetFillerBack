@@ -79,6 +79,20 @@ const getMonday = (date) => {
   }
 };
 
+
+export const getFriday = (date) => {
+  const result = new Date(date);
+  const day = result.getDay(); // 0 = Dom, 1 = Lun, ..., 5 = Vie, 6 = Sáb
+  
+  // Convertimos domingo (0) a 7 para que la semana sea 1 (Lun) a 7 (Dom)
+  const currentDayOfWeek = day === 0 ? 7 : day;
+
+  const diff = 5 - currentDayOfWeek;
+
+  result.setDate(result.getDate() + diff);
+  return result;
+};
+
 // Calcular el numero de semanas
 // Calcula cual es el primer lunes y el ultimo lunes
 // Calcula la diferencia en dias entre ambios y le suma 1 (contar primera semana)
