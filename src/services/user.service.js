@@ -53,7 +53,7 @@ export const userLogin = async (userData) => {
 
     // Validar contraseñas
     if (!bcrypt.compareSync(password, user.password)) {
-      throw createError(400, "wrong password");
+      throw createError(401, "wrong password");
     }
 
     // Generar el token

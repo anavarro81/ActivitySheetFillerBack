@@ -63,19 +63,22 @@ export const completeWeeklyTasks = async (weekId, weekData) => {
 
     if (!week) throw createError(404, "week not found");
 
-    const internship = await Internship.findOne({ _id: week.internship_id });
+    // La semana en curso solo puede completar la semana en curso si es el último dia de la semana 
+    // o en la fecha de fin de prácticas.
+    if (week.status == "En Curso") {
+      const internship = await Internship.findOne({ _id: week.internship_id });
 
-    const currentDate = new Date();
+      const currentDate = new Date();
 
-    console.log("internship ", internship);
-    console.log("currentDate ", currentDate);
-    console.log("internship.end_date ", internship.end_date);
-
-    if (
-      !canCompleteWeek(currentDate, getFriday(currentDate), internship.end_date)
-    ) {
-      console.log("no puede completar la semana");
-      throw createError(400, "Cannot complete before deadline");
+      if (
+        !canCompleteWeek(
+          currentDate,
+          getFriday(currentDate),
+          internship.end_date,
+        )
+      ) {
+        throw createError(400, "Cannot complete before deadline");
+      }
     }
 
     await updateWeeklyTasks(weekId, weekData);
