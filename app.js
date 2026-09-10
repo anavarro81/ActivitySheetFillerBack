@@ -20,14 +20,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://activity-sheet-clon.vercel.app/",
+      "https://activity-sheet-clon.vercel.app", 
     ],
     credentials: true,
-    // Permite leer Content-Disposition desde Front).
     exposedHeaders: ["Content-Disposition"],
-    credentials: true,
   }),
 );
+
 app.use(helmet());
 app.use(express.json());
 
