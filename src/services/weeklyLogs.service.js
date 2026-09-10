@@ -27,9 +27,24 @@ export const getTaskByWeek = async (weekID, studentId) => {
       throw createError(403, "Access denied");
     }
 
+    const currentDate = new Date();
+    let isWeekCompletable = true;
+
+
+    // Si la semama está en curso, solo se puede completar
+    // si es último día de la misma o fin de practicas. 
+    if (weekTask.status == "En Curso") {
+      isWeekCompletable = canCompleteWeek(
+        currentDate,
+        getFriday(currentDate),
+        intenships.end_date,
+      );
+    }
+
     return {
       start_date: weekTask.start_date,
       end_date: weekTask.end_date,
+      isWeekCompletable,
       daily_log: weekTask.daily_logs,
     };
   } catch (error) {
@@ -63,7 +78,7 @@ export const completeWeeklyTasks = async (weekId, weekData) => {
 
     if (!week) throw createError(404, "week not found");
 
-    // La semana en curso solo puede completar la semana en curso si es el último dia de la semana 
+    // La semana en curso solo puede completar la semana en curso si es el último dia de la semana
     // o en la fecha de fin de prácticas.
     if (week.status == "En Curso") {
       const internship = await Internship.findOne({ _id: week.internship_id });

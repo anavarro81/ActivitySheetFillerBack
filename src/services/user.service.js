@@ -48,7 +48,7 @@ export const userLogin = async (userData) => {
     const user = await User.findOne({ dni: dni });
 
     if (!user) {
-      throw createError(404, "user not found");
+      throw createError(401, "user not found");
     }
 
     // Validar contraseñas

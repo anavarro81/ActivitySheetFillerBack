@@ -18,7 +18,10 @@ app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://activity-sheet-clon.vercel.app/"      
+    ],
     // Permite leer Content-Disposition desde Front).
     exposedHeaders: ["Content-Disposition"],
     credentials: true,
