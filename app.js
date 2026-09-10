@@ -20,7 +20,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://activity-sheet-clon.vercel.app", 
+      "https://activity-sheet-web-35vg.vercel.app" 
     ],
     credentials: true,
     exposedHeaders: ["Content-Disposition"],
