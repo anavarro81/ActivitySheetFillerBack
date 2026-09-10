@@ -16,7 +16,7 @@ export const createWordDocument = async (wordData) => {
   if (isProd) {
     const response = await fetch(URL_TEMPLATE);
 
-    console.log('response ', response)
+    
 
     if (!response.ok) {
       throw new Error(`No se pudo cargar la plantilla: ${response.status}`);
@@ -24,7 +24,7 @@ export const createWordDocument = async (wordData) => {
 
     template = Buffer.from(await response.arrayBuffer());
 
-    console.log('template ', template)
+    
 
   } else {
     const templatePath = path.resolve(process.cwd(), "wordTemplate.docx");
