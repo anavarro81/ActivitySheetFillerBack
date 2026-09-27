@@ -36,10 +36,17 @@ const PROGRAMMING_TASKS = [
 
 const randomFrom = (array) => array[Math.floor(Math.random() * array.length)];
 
+// const startOfDay = (date) => {
+//   const d = new Date(date);
+//   d.setHours(0, 0, 0, 0);
+//   return d;
+// };
+
+// Usamos métodos UTC para fijar exactamente las 00:00:00.000Z
+// Si no al grabar en la base de datos de mongo DB, lo convierte en UTC y lo almacena como las 22:00 (del día anterior)
 const startOfDay = (date) => {
-  const d = new Date(date);
-  d.setHours(0, 0, 0, 0);
-  return d;
+  const d = new Date(date);  
+  return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0));
 };
 
 const addDays = (date, days) => {
