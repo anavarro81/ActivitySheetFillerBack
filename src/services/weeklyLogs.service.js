@@ -2,7 +2,7 @@ import WeeklyLog from "../models/weeklyLogs.model.js";
 import Internship from "../models/intenships.model.js";
 import User from "../models/user.model.js";
 import createError from "http-errors";
-import { createWordDocument } from "../utils/createWord.js";
+
 import {
   formatIntershipPeriod,
   getFriday,
@@ -137,7 +137,7 @@ export const downloadWord = async (weekID) => {
     console.log("weekStartDate ", weekStartDate);
     console.log("weekEndDate ", weekEndDate);
 
-    const wordData = {
+    const PDFData = {
       name: student.first_name,
       lastname: student.last_name,
       internship_period: formatIntershipPeriod(weekStartDate, weekEndDate),
@@ -149,8 +149,8 @@ export const downloadWord = async (weekID) => {
 
     let shortStartDate = formatShortDate(weekStartDate);
     let shortEndDate = formatShortDate(weekEndDate);
-    let formatedName = student.first_name.replaceAll(" ", "-");
-    let formatedLastName = student.last_name.replaceAll(" ", "-");
+    let formatedName = student.first_name.toLowerCase().replaceAll(" ", "-");
+    let formatedLastName = student.last_name.toLowerCase().replaceAll(" ", "-");
     
     // Nombre del archivo descargable Nombre-Apellidos-FechaInicio-FechaFin
     let filename = [
@@ -160,11 +160,7 @@ export const downloadWord = async (weekID) => {
       shortEndDate,
     ].join("-");
 
-    const wordDonwload = await createWordDocument(wordData);
-
-    // return wordDonwload;
-
-    return { wordDonwload, filename };
+    return { PDFData, filename };
   } catch (error) {
     throw error;
   }
