@@ -117,3 +117,20 @@ export const formatIntershipPeriod = (start_date, end_date) => {
 
   return `Del ${startDateIso.getDate()} del ${months[startDateIso.getMonth()]} al ${endDateIso.getDate()} del ${months[endDateIso.getMonth()]}`;
 };
+
+
+export const formatShortDate = (dateString) => {
+
+  let date = new Date(dateString);
+  
+  // Extraemos el día del mes
+  let day = date.getUTCDate();
+  
+  // Extraemos el mes en formato corto (ej. "sep")
+  let month = new Intl.DateTimeFormat('es-ES', { 
+    month: 'short', 
+    timeZone: 'UTC' 
+  }).format(date).replace('.', ''); // Quitamos el punto abreviado si lo hubiera
+  
+  return `${day}${month}`;
+} 

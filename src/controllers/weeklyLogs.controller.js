@@ -60,18 +60,18 @@ export const downloadWord = async (req, res) => {
   const weekId = req.params.id;
 
   try {
-    
-    const wordDonwload = await weekLogServices.downloadWord(weekId);
+    const { wordDonwload, filename } =
+      await weekLogServices.downloadWord(weekId);
 
     
-    
-    // Cabeceras estandar para indicar que es un fichero binario y forzar su descarga. 
-    // Indica que es un fichero descargable y se indica su nombre. 
+
+    // Cabeceras estandar para indicar que es un fichero binario y forzar su descarga.
+    // Indica que es un fichero descargable y se indica su nombre.
     res.setHeader(
       "content-disposition",
-      "attachment; filename=hoja_actividad.docx",
+      `attachment; filename=${filename}.docx`,
     );
-    
+
     // Indica el tipo de archivo que se manda
     res.setHeader(
       "Content-Type",

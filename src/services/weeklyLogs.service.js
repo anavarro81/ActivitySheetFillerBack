@@ -3,7 +3,11 @@ import Internship from "../models/intenships.model.js";
 import User from "../models/user.model.js";
 import createError from "http-errors";
 import { createWordDocument } from "../utils/createWord.js";
-import { formatIntershipPeriod, getFriday } from "../utils/calendar.js";
+import {
+  formatIntershipPeriod,
+  getFriday,
+  formatShortDate,
+} from "../utils/calendar.js";
 import { canCompleteWeek } from "../utils/validator.js";
 
 export const getTaskByWeek = async (weekID, studentId) => {
@@ -30,9 +34,8 @@ export const getTaskByWeek = async (weekID, studentId) => {
     const currentDate = new Date();
     let isWeekCompletable = true;
 
-
     // Si la semama está en curso, solo se puede completar
-    // si es último día de la misma o fin de practicas. 
+    // si es último día de la misma o fin de practicas.
     if (weekTask.status == "En Curso") {
       isWeekCompletable = canCompleteWeek(
         currentDate,
@@ -131,6 +134,9 @@ export const downloadWord = async (weekID) => {
     const weekStartDate = weekTasks.daily_logs[0].date;
     const weekEndDate = weekTasks.daily_logs[daysOfWeek - 1].date;
 
+    console.log("weekStartDate ", weekStartDate);
+    console.log("weekEndDate ", weekEndDate);
+
     const wordData = {
       name: student.first_name,
       lastname: student.last_name,
@@ -141,9 +147,24 @@ export const downloadWord = async (weekID) => {
       })),
     };
 
+    let shortStartDate = formatShortDate(weekStartDate);
+    let shortEndDate = formatShortDate(weekEndDate);
+    let formatedName = student.first_name.replaceAll(" ", "-");
+    let formatedLastName = student.last_name.replaceAll(" ", "-");
+    
+    // Nombre del archivo descargable Nombre-Apellidos-FechaInicio-FechaFin
+    let filename = [
+      formatedName,
+      formatedLastName,
+      shortStartDate,
+      shortEndDate,
+    ].join("-");
+
     const wordDonwload = await createWordDocument(wordData);
 
-    return wordDonwload;
+    // return wordDonwload;
+
+    return { wordDonwload, filename };
   } catch (error) {
     throw error;
   }
